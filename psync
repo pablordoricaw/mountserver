@@ -10,7 +10,7 @@ MNTPNT="~/RIT/CS" #mount point on computer
 
 #Usage staement
 if [ $# -eq 0 ]; then
-    echo "Usage: psync <host-name>"
+    echo "Usage: ./psync <host-name>"
 else
     #Make Local folders and link them to Student Folders on Server
     if [ "$1" != "stop" ]; then
