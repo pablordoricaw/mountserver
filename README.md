@@ -10,12 +10,12 @@ server.
 __macOS__ -> [FUSE for macOS](https://osxfuse.github.io/) required.
 
 ### Usage: 
-1. Change the variables in psync file to the desired user, host domain and 
+1. Change the variables in mount file to the desired user, host domain and 
 mount point.
     
 2. Run the script as follows:
         
 ```
-./psync hostname
+./mount hostname
 ```
 
