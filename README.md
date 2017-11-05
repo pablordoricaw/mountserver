@@ -1,5 +1,5 @@
 ## Bash script that utilizes sshfs in order to mount a server directory unto 
-your home directory.
+## your home directory.
 
 Do you prefer using a text editor such as Sublime or Atom over Vim, but have 
 to compile and execute your code on a server through the terminal? With this 
