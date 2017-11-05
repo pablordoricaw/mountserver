@@ -4,13 +4,13 @@
 # by connecting to the the server specified in the variables below.
 
 USR="pxo2297" #ssh account to ssh into server
-DIR="/home/stu12/s15/pxo2297/" #server directory to mount onto computer
+DIR="/home/stu12/s15/$USR/" #server directory to mount onto computer
 SERVER="cs.rit.edu" #domain of server
 MNTPNT="~/RIT/CS" #mount point on computer
 
 #Usage staement
 if [ $# -eq 0 ]; then
-    echo "Usage: ./psync <host-name>"
+    echo "Usage: ./mount <host-name>"
 else
     #Make Local folders and link them to Student Folders on Server
     if [ "$1" != "stop" ]; then
