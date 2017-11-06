@@ -11,6 +11,11 @@ the server. Here's [DigitalOcean](https://www.digitalocean.com/community/tutoria
 
 ### Tested environments:
 __macOS__ -> [FUSE for macOS](https://osxfuse.github.io/) required.
+__Ubuntu__ -> sshfs required. Download by typing the following command in the 
+              terminal and inputting your user password.
+              ```
+              sudo apt-get install sshfs
+              ```
 
 ### Usage: 
 1. Write an input file that holds the desired directory on the server 
@@ -21,6 +26,16 @@ medusa.txt .
 2. Create the C executable with the Makefile by using the command `make`. 
 
 3. Run the program as follows:
-    - To mount the directory `./mount_c -m[ount] filename `
+    - To mount the directory 
+      ```
+      ./mount_c -m[ount] filename 
+      ```
 
-    - To unmount the directory `./mount_c -s[top] filename ` or `./mount_c -u[nmount] filename `
+    - To unmount the directory 
+      ```
+      ./mount_c -s[top] filename 
+      ``` 
+      or 
+      ```
+      ./mount_c -u[nmount] filename 
+      ```
