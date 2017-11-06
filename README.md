@@ -1,21 +1,29 @@
-## Bash script that utilizes sshfs in order  your home directory.
+## C program that utilizes sshfs in order to extend your home directory.
 
 Do you prefer using a text editor such as Sublime or Atom over Vim, but have 
 to compile and execute your code on a server through the terminal? With this 
-script you can mount the server directory onto your computer, and edit your code 
-with the text editor of your choice while still compile and execute it on the 
-server.
+program you can mount the server directory onto your computer, and edit your 
+code with the text editor of your choice while still compiling and executing it 
+on the server.
 
 ### Tested environments:
 __macOS__ -> [FUSE for macOS](https://osxfuse.github.io/) required.
 
 ### Usage: 
-1. Change the variables in mount file to the desired user, host domain and 
-mount point.
+1. Write an input file that holds the user@host:dir on the first line and the
+mountpoint directory on the second line. An example can be found in medusa.txt
     
-2. Run the script as follows:
-        
+3. Run the program as follows:
+    - To mount the directory
 ```
-./mount hostname
+./mount_c -m[ount] filename
 ```
 
+    - To unmount the directory
+```
+./mount_c -s[top] filename
+```
+or
+```
+./mount_c -u[nmount] filename
+```
