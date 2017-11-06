@@ -4,18 +4,29 @@
  * Description: C file to extend filesystem using sshfs"
  ******************************************************************************/
 
+//header files
 #include <stdio.h>
 #include <getopt.h>
 #include <stdlib.h>
 #include <string.h>
 
+//max string length macro
 #define MAX_STR_LEN (256)
 
+//use to determine what unmount command to use based on the OS
+#if defined(__APPLE__) || defined(__MACH__)
+    #define UNMOUNT_CMD "umount "
+#elif defined(__linux__) || defined(linux) || defined(__linux)
+    #define UNMOUNT_CMD "fusermount -u "
+#endif
+
+//sshfs command print error macro
 #define PRINT_CMD_ERROR(command){                                              \
     fprintf(stderr,"ERROR: executing command %s in %s:%d\n",command, __FILE__, \
             __LINE__);                                                         \
 }
 
+//function declaration
 void mount();
 void unmount();
 void openfile(char * filename);
@@ -117,7 +128,7 @@ void mount(){
  * return: nothing
  ******************************************************************************/
 void unmount(){
-    char command[MAX_STR_LEN] = "umount " ; //umount command
+    char command[MAX_STR_LEN] = UNMOUNT_CMD; //umount command
 
     //umount to unmount the server directory
     strcat(command, readStr[1]);
