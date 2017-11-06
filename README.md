@@ -10,8 +10,10 @@ on the server.
 __macOS__ -> [FUSE for macOS](https://osxfuse.github.io/) required.
 
 ### Usage: 
-1. Write an input file that holds the user@host:dir on the first line and the
-mountpoint directory on the second line. An example can be found in medusa.txt
+1. Write an input file that holds the desired directory on the server 
+(user@host:dir) to mount onto your computer on the first line, and the mount 
+point directory on your computer in the second line. An example can be found in 
+medusa.txt .
 
 2. Create the C executable with the Makefile by using the command `make`. 
 
