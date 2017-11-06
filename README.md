@@ -12,7 +12,8 @@ the server. Here's [DigitalOcean](https://www.digitalocean.com/community/tutoria
 ### Tested environments:
 __macOS__ -> [FUSE for macOS](https://osxfuse.github.io/) required.
 __Ubuntu__ -> sshfs required. Download by typing the following command in the 
-              terminal and inputting your user password.
+              terminal and inputting your user password:
+
               ```
               sudo apt-get install sshfs
               ```
