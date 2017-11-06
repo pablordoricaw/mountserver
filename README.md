@@ -12,7 +12,9 @@ __macOS__ -> [FUSE for macOS](https://osxfuse.github.io/) required.
 ### Usage: 
 1. Write an input file that holds the user@host:dir on the first line and the
 mountpoint directory on the second line. An example can be found in medusa.txt
-    
+
+2. Create the C executable with the Makefile by using the command `make`. 
+
 3. Run the program as follows:
     - To mount the directory `./mount_c -m[ount] filename `
 
