@@ -70,7 +70,7 @@ int main(int argc, char* argv[]){
         }
     }
     if(optind < argc || argc == 1){
-        fprintf(stderr,"usage: ./mount -m[ount] -s[top] -u[nmount] filename\n");
+        fprintf(stderr,"usage: ./mount_c -m[ount] -s[top] -u[nmount] filename\n");
         exit(99);
     }
 }
