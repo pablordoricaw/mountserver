@@ -6,6 +6,9 @@ program you can mount the server directory onto your computer, and edit your
 code with the text editor of your choice while still compiling and executing it 
 on the server.
 
+Works even better if an ssh key pair has been setup between your computer and 
+the server. Here's [DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2) tutorial on how to generate and setup the ssh keys.
+
 ### Tested environments:
 __macOS__ -> [FUSE for macOS](https://osxfuse.github.io/) required.
 
