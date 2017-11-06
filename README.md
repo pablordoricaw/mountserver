@@ -14,16 +14,6 @@ __macOS__ -> [FUSE for macOS](https://osxfuse.github.io/) required.
 mountpoint directory on the second line. An example can be found in medusa.txt
     
 3. Run the program as follows:
-    - To mount the directory
-```
-./mount_c -m[ount] filename
-```
+    - To mount the directory `./mount_c -m[ount] filename `
 
-    - To unmount the directory
-```
-./mount_c -s[top] filename
-```
-or
-```
-./mount_c -u[nmount] filename
-```
+    - To unmount the directory `./mount_c -s[top] filename ` or `./mount_c -u[nmount] filename `
