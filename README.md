@@ -2,9 +2,9 @@
 
 Do you prefer using a text editor such as Sublime or Atom over Vim, but have 
 to compile and execute your code on a server through the terminal? With this 
-program you can mount the server directory onto your computer, and edit your 
-code with the text editor of your choice while still compiling and executing it 
-on the server.
+program you can mount the server directory onto your computer. This allows you 
+to edit your code with the text editor of your choice, but compile and execute
+it on the server.
 
 Works even better if an ssh key pair has been setup between your computer and 
 the server. Here's [DigitalOcean](goo.gl/Vk5au) tutorial on how to generate and 
