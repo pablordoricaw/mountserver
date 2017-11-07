@@ -7,11 +7,14 @@ code with the text editor of your choice while still compiling and executing it
 on the server.
 
 Works even better if an ssh key pair has been setup between your computer and 
-the server. Here's [DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2) tutorial on how to generate and setup the ssh keys.
+the server. Here's [DigitalOcean](goo.gl/Vk5au) tutorial on how to generate and 
+setup the ssh keys.
 
 ### Tested environments:
 __macOS__ -> [FUSE for macOS](https://osxfuse.github.io/) required.
-__Ubuntu__ -> sshfs required. Download by typing the following command in the terminal and inputting your user password:
+
+__Ubuntu__ -> sshfs required. Download by typing the following command in the 
+              terminal and inputting your user password:
               ```
               sudo apt-get install sshfs
               ```
