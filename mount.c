@@ -2,6 +2,8 @@
 * author: Pablo Ordorica <pablo_ordoricaw@hotmail.com>
 * file: mount.c
 * Description: C file to extend filesystem using sshfs"
+*              Takes advantage of the getopt and getops_long to parse arguments
+*              Uses system commands to perform the mounting and mounting ops.
 ******************************************************************************/
 
 //header files
@@ -13,8 +15,13 @@
 
 //max string length macro
 #define MAX_STR_LEN (256)
+//ERROR macros
 #define SYS_CALL_ERR (-1)
 #define RESOURCE_BSY (256)
+
+//Argument number macros
+#define MAX_ARGS (3)
+#define MIN_ARGS (2)
 
 //use to determine what unmount command to use based on the OS
 #if defined(__APPLE__) || defined(__MACH__)
@@ -23,7 +30,7 @@
     #define UNMOUNT_CMD "fusermount -u "
 #endif
 
-//sshfs command print error macro
+//command print error macro
 #define PRINT_CMD_ERROR(command){                                              \
 		fprintf(stderr,"ERROR: executing command %s in %s:%d\n",command,       \
 		        __FILE__, __LINE__);                                           \
@@ -35,25 +42,29 @@ static void unmount();
 static void funmount();
 static char* copyfilename(char * optarg);
 static void openfile(char * filename);
+static void info();
 
 //global static variables
 static char readStr[2][MAX_STR_LEN];//readStr[0]: user@hostname:/dir into
                                     //readStr[1]: the mountpoint directory
-static char buffer[MAX_STR_LEN];
 
+////////////////////////////////////////////////////////////////////////////////
+//                                    MAIN                                    //
+////////////////////////////////////////////////////////////////////////////////
 int main(int argc, char* argv[]){
 	int rc;
-	int opt_index = 0;              //store option index
-	char* getoptOptions = "m:s:u:"; //short commaand line parameter list
+	int opt_index = 0;                 //store option index
+	char* getoptOptions = "i::m:s:u:"; //short command line parameter list
 	char* filename = NULL;             //file pointer
-	int moru = 0;               //used as boolean: 0 - try to unmount
-	                            //                 1 - try to mount
+	int moru = 0;                      //used as boolean: 0 - try to unmount
+	                                   //                 1 - try to mount
 
 	//long command line parameter list
 	struct option long_options[] = {
 		{"mount",   required_argument, 0, 'm'},
 		{"stop",    required_argument, 0, 's'},
 		{"unmount", required_argument, 0, 'u'},
+		{"info",    no_argument,       0, 'i'},
 		{0, 0, 0, 0}
 	};
 	opterr = 1; //enable automatic error reporting
@@ -66,14 +77,17 @@ int main(int argc, char* argv[]){
 			moru = 1;
 			filename = copyfilename(optarg);
 			break;
-		case 's'://stop
+		case 's': //stop
 			moru = 0;
 			filename = copyfilename(optarg);
 			break;
-		case 'u'://unmount
+		case 'u': //unmount
 			moru = 0;
 			filename = copyfilename(optarg);
 			break;
+		case 'i': //info
+			info(); //Display mounted volumes
+			return 0;
 		case '?': // Handled by default error handler
 			break;
 		default:
@@ -81,8 +95,10 @@ int main(int argc, char* argv[]){
 			exit(99);
 		}
 	}
-	if(optind < argc || (3 != argc)) {
-		fprintf(stderr,"usage: ./mount_c -m[ount] -s[top]/-u[nmount] filename\n");
+	if(optind < argc || (MAX_ARGS != argc && MIN_ARGS != argc)) {
+		fprintf(stderr,"Usage(Mount):   ./mount_c -m[ount] filename\n");
+		fprintf(stderr,"Usage(Unmount): ./mount_c -s[top]/-u[nmount] filename\n");
+		fprintf(stderr,"Usage(Info):    ./mount_c -i[nfo]\n");
 		exit(99);
 	}
 
@@ -179,6 +195,7 @@ static void mount(){
 		PRINT_CMD_ERROR(command);
 		exit(-1);
 	}
+	printf("Success\n");
 }
 /*******************************************************************************
  * Description: use the umount bash with the data stored in readstr to unmount
@@ -202,6 +219,7 @@ static void unmount(){
 	} else if(RESOURCE_BSY == syscall) { //if resource busy, then ask if force
 		funmount();
 	}
+	printf("Success\n");
 }
 /*******************************************************************************
  * Description: use the umount bash with the data stored in readstr to force
@@ -211,6 +229,7 @@ static void unmount(){
  ******************************************************************************/
 static void funmount(){
 	char command[MAX_STR_LEN] = UNMOUNT_CMD; //umount command
+	char buffer[MAX_STR_LEN]; //used to receive user input
 
 	printf("Do you want to force unmount? (y/n): ");
 	if(NULL != fgets(buffer, MAX_STR_LEN, stdin)) {
@@ -235,6 +254,19 @@ static void funmount(){
 				PRINT_CMD_ERROR(command);
 				exit(-1);
 			}
+			printf("Success\n");
 		}
+	}
+}
+/*******************************************************************************
+ * Description: Displays the mounted filesystems using the mount command
+ * parameters: none
+ * return: nothing
+ ******************************************************************************/
+static void info(){
+	char command[MAX_STR_LEN] = "mount -t osxfuse\0";
+	if(SYS_CALL_ERR == system(command)) {
+		PRINT_CMD_ERROR(command);
+		exit(-1);
 	}
 }
