@@ -7,8 +7,8 @@ to edit your code with the text editor of your choice, but compile and execute
 it on the server.
 
 Works even better if an ssh key pair has been setup between your computer and
-the server. Here's [DigitalOcean's](goo.gl/Vk5au) tutorial on how to generate
-and setup the ssh keys.
+the server. Here's [DigitalOcean's](https://goo.gl/Vk5au7) tutorial on how to
+generate and setup the ssh keys.
 
 ### Tested environments:
 __macOS__ -> [FUSE for macOS](https://osxfuse.github.io/) required.
@@ -56,6 +56,6 @@ medusa.txt .
       ./mount_c -u[nmount] filename
       ```
 
-### Next Steps
+### Next Steps :soon:  
 - [ ] Implement force and list functionality for Ubuntu  
 - [ ] Check if directory is already mounted before mounting or un-mounting.
