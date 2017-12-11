@@ -13,22 +13,23 @@ setup the ssh keys.
 ### Tested environments:
 __macOS__ -> [FUSE for macOS](https://osxfuse.github.io/) required.
 
-             **Tested functionality:**
-             Mount         :white_check_mark:
-             Un-mount      :white_check_mark:
-             Force unmount :white_check_mark:
-             List mounted  :white_check_mark:
+**Tested functionality:**
+Mount         :white_check_mark:
+Un-mount      :white_check_mark:
+Force unmount :white_check_mark:
+ List mounted  :white_check_mark:
 
 __Ubuntu__ -> sshfs required. Download by typing the following command in the
               terminal and inputting your user password:
 
               sudo apt-get install sshfs
 
-              **Tested functionality:**
-              Mount         :white_check_mark:
-              Un-mount      :white_check_mark:
-              Force unmount :x:
-              List mounted  :x:
+**Tested functionality:**
+Mount         :white_check_mark:
+Un-mount      :white_check_mark:
+Force unmount :x:
+List mounted  :x:
+
 ### Usage:
 1. Write an input file that holds the desired directory on the server
 (user@host:dir) to mount onto your computer on the first line, and the mount
@@ -46,7 +47,7 @@ medusa.txt .
     ```
     ./mount_c -i[nfo] filename
     ```
-    - To unmount the directory 
+    - To unmount the directory
       ```
       ./mount_c -s[top]/-u[nmount] filename
       ```
