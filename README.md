@@ -15,7 +15,7 @@ __macOS__ -> [FUSE for macOS](https://osxfuse.github.io/) required.
 
 **Tested functionality:**  
 :white_check_mark: Mount           
-:white_check_mark: Un-mount  
+:white_check_mark: Unmount  
 :white_check_mark: Force unmount  
 :white_check_mark: List mounted  
 
@@ -26,7 +26,7 @@ __Ubuntu__ -> sshfs required. Download by typing the following command in the
 
 **Tested functionality:**  
 :white_check_mark: Mount  
-:white_check_mark: Un-mount  
+:white_check_mark: Unmount  
 :x: Force unmount   
 :x: List mounted    
 
@@ -44,9 +44,9 @@ medusa.txt .
       ./mount_c -m[ount] filename
       ```
     - To display list of mounted directories
-    ```
-    ./mount_c -i[nfo] filename
-    ```
+      ```
+      ./mount_c -i[nfo] filename
+      ```
     - To unmount the directory
       ```
       ./mount_c -s[top]/-u[nmount] filename
