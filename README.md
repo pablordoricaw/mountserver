@@ -57,5 +57,6 @@ medusa.txt .
       ```
 
 ### Next Steps :soon:  
-- [ ] Implement force and list functionality for Ubuntu  
+- [x] Implement list functionality for Ubuntu  
+- [ ] Implement force unmount functionality for Ubuntu  
 - [ ] Check if directory is already mounted before mounting or un-mounting.
