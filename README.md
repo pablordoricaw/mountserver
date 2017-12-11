@@ -15,8 +15,8 @@ __macOS__ -> [FUSE for macOS](https://osxfuse.github.io/) required.
 
 **Tested functionality:**  
 :white_check_mark: Mount           
-:white_check_mark: Unmount  
-:white_check_mark: Force unmount  
+:white_check_mark: Un-mount  
+:white_check_mark: Force un-mount  
 :white_check_mark: List mounted  
 
 __Ubuntu__ -> sshfs required. Download by typing the following command in the
@@ -26,8 +26,8 @@ __Ubuntu__ -> sshfs required. Download by typing the following command in the
 
 **Tested functionality:**  
 :white_check_mark: Mount  
-:white_check_mark: Unmount  
-:x: Force unmount   
+:white_check_mark: Un-mount  
+:x: Force un-mount   
 :x: List mounted    
 
 ### Usage:
@@ -55,3 +55,7 @@ medusa.txt .
       ```
       ./mount_c -u[nmount] filename
       ```
+
+### Next Steps
+- [ ] Implement force and list functionality for Ubuntu  
+- [ ] Check if directory is already mounted before mounting or un-mounting.
