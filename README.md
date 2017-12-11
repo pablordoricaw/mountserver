@@ -49,7 +49,7 @@ medusa.txt .
       ```
     - To unmount the directory
       ```
-      ./mount_c -s[top]/-u[nmount] filename
+      ./mount_c -s[top] filename
       ```
       or
       ```
