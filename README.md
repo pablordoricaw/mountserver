@@ -28,7 +28,7 @@ __Ubuntu__ -> sshfs required. Download by typing the following command in the
 :white_check_mark: Mount  
 :white_check_mark: Un-mount  
 :x: Force un-mount   
-:x: List mounted    
+:white_check_mark: List mounted    
 
 ### Usage:
 1. Write an input file that holds the desired directory on the server

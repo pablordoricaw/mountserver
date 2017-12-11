@@ -26,8 +26,10 @@
 //use to determine what unmount command to use based on the OS
 #if defined(__APPLE__) || defined(__MACH__)
     #define UNMOUNT_CMD "umount "
+    #define INFO_CMD "mount -t osxfuse\0"
 #elif defined(__linux__) || defined(linux) || defined(__linux)
     #define UNMOUNT_CMD "fusermount -u "
+    #define INFO_CMD "mount -t fuse.sshfs\0"
 #endif
 
 //command print error macro
@@ -264,7 +266,7 @@ static void funmount(){
  * return: nothing
  ******************************************************************************/
 static void info(){
-	char command[MAX_STR_LEN] = "mount -t osxfuse\0";
+	char command[MAX_STR_LEN] = INFO_CMD;
 	if(SYS_CALL_ERR == system(command)) {
 		PRINT_CMD_ERROR(command);
 		exit(-1);
