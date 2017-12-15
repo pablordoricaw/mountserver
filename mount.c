@@ -17,6 +17,7 @@
 #define MAX_STR_LEN (256)
 //ERROR macros
 #define SYS_CALL_ERR (-1)
+#define SYS_CALL_SUCC (0)
 #define RESOURCE_BSY (256)
 
 //Argument number macros
@@ -192,12 +193,15 @@ static void mount(){
 	strcat(command, readStr[0]);
 	strcat(command, " ");
 	strcat(command, readStr[1]);
+	//try to mount
+	int syscall = system(command);
 	printf("Mounting server directory %s\n", readStr[0]);
-	if(SYS_CALL_ERR == system(command)) {
+	if(SYS_CALL_ERR == syscall) {
 		PRINT_CMD_ERROR(command);
 		exit(-1);
+	} else if(SYS_CALL_SUCC == syscall) {
+		printf("Success\n");
 	}
-	printf("Success\n");
 }
 /*******************************************************************************
  * Description: use the umount bash with the data stored in readstr to unmount
@@ -220,8 +224,9 @@ static void unmount(){
 		exit(-1);
 	} else if(RESOURCE_BSY == syscall) { //if resource busy, then ask if force
 		funmount();
+	} else if(SYS_CALL_SUCC == syscall) {
+		printf("Success\n");
 	}
-	printf("Success\n");
 }
 /*******************************************************************************
  * Description: use the umount bash with the data stored in readstr to force
@@ -251,12 +256,15 @@ static void funmount(){
 			//creating force unmount command
 			strcat(command, "-f "); //attach force option to unmount
 			strcat(command, readStr[1]);
+			//force unmount
+			int syscall = system(command);
 			printf("Forcing unmount of server directory %s\n", readStr[0]);
-			if(-1 == system(command)) {
+			if(-1 == syscall) {
 				PRINT_CMD_ERROR(command);
 				exit(-1);
+			} else if(SYS_CALL_SUCC == syscall) {
+				printf("Success\n");
 			}
-			printf("Success\n");
 		}
 	}
 }
