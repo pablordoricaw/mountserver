@@ -34,7 +34,7 @@ __Ubuntu__ -> sshfs required. Download by typing the following command in the
 1. Write an input file that holds the desired directory on the server
 (user@host:dir) to mount onto your computer on the first line, and the mount
 point directory on your computer in the second line. An example can be found in
-medusa.txt .
+example.txt .
 
 2. Create the C executable with the Makefile by using the command `make`.
 
